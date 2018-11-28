@@ -1,12 +1,13 @@
 var express = require("express");
 var app =express();
+var port = process.env.PORT || 3000;
 var bodyParser = require("body-parser");
 var fs = require("fs");
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 
-app.listen(3000, function(){
+app.listen(port, function(){
 	console.log("Server starting at localhost:3000");
 });
 

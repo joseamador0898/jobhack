@@ -1,0 +1,54 @@
+<html lang="en" dir="ltr">
+  <head>
+    <title>Cloud Scanner Project</title>
+     <link rel="stylesheet" href="style.css">
+     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+  <nav class ="navbar navbar-expand-sm bg-light navbar-light">
+    <div class = "container-fluid">
+       <div class="mx-auto order-0">
+         <a class="navbar-brand">Photo Bomb</a>
+       </div>
+      <div class="collapse navbar-collapse">
+        <!-- <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item"><a>Login</a></li>
+          <li class="nav-item"><a>Sign Up</a></li>
+          <li class="nav-item"><a>Logout</a></li>
+          <li class="nav-item"><a>Contribute</a></li>
+          <li class="nav-item"><a>Contact Us</a></li>
+        </ul> -->
+      </div>
+     </div>
+  </nav>
+
+  <div class="container">
+      <div class="row">
+        <video id="video" width="640" height="480" autoplay=""></video>
+      <div>
+        <button id="snap" class="sexyButton">Snap Photo</button>
+        <canvas id="canvas" width="640" height="480"></canvas>
+  </div>
+
+  <script>
+    var video = document.getElementById('video');
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        //video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        video.play();
+    });
+  }
+  var canvas = document.getElementById('canvas');
+  var context = canvas.getContext('2d');
+  var video = document.getElementById('video');
+
+  // Trigger photo take
+  document.getElementById("snap").addEventListener("click", function() {
+     context.drawImage(video, 0, 0, 640, 480);
+  });
+  </script>

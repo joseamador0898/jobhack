@@ -3,6 +3,7 @@ var app =express();
 var port = process.env.PORT || 3000;
 var bodyParser = require("body-parser");
 var fs = require("fs");
+var analysis="";
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
@@ -13,7 +14,7 @@ app.listen(port, function(){
 
 app.get("/", function(req,res){
   // res.send("I am working and online abby");
-  res.render("photo");
+  res.render("photo", {analysis: analysis});
   }
 );
 
@@ -22,7 +23,18 @@ app.get("/dashboard", function(req,res){
   }
 );
 
+app.post("/photo", function(req,res){
+	//call api function in
+	//analysis = ;
+	res.redirect("/");
+});
 
+
+app.post("/home",function(req,res){
+	//call api function in
+	//analysis = ;
+	res.redirect("/");
+});
 
 // app.get("/", function(req, res){
 //     res.render("home");

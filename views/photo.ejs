@@ -1,4 +1,74 @@
-<% include ./partials/header %>
-
-
 <% include ./partials/footer %>
+
+<div id="jumbotron" class='container'>
+  <header id="jumbo_head" class = "jumbotron">
+    <div class = 'container'  style="text-align:center;">  <!--this is just to help preserve the spacing after shrinking-->
+      <h1 id="welcome">Welcome to Clothes Seer!!!</h1>
+      <br></br>
+      <h2 style="color: #031726; font-style:italic;">Please picture the item, and its tag before placing it in the bin below.</h2>
+      <br></br>
+      <p style="text-align:center; color: #031726;">All Contributors are ellgible for a 20% discount on future purchases of the returned clothing's brand's products.</p>
+      <p>
+        <!--the pargraph tags are jsut for more spavcing  -->
+        <a id='btn-new' class='btn btn-lg' href="#word">Proceed</a>
+      </p>
+    </div>
+  </header>
+</div>
+
+<br></br>
+<br id="word"></br>
+  <div class="container">
+      <p>
+        <h1> Please take the Image Here:</h1>
+        <h2 class=linebar>___________________</h2>
+      </p>
+        <video id="video" width="640" height="580" autoplay=""></video>
+        <br></br>
+        <button id="snap" class="sexyButton" href="#word2">Snap Photo</button>
+        <br></br>
+  </div>
+
+  <br></br>
+  <br></br>
+    <div class="container">
+        <p>
+          <h1 id ="word2"> Result:</h1>
+          <h2 class=linebar>___________________</h2>
+        </p>
+          <canvas id="canvas" width="640" height="580"></canvas>
+          <a id="link"></a>
+    </div>
+
+  <div class='caption'> <% analysis%></div>
+
+  <form action="/photo" method="POST">
+    <button>Perform Image Analysis</button>
+  </form>
+
+  <script>
+    var video = document.getElementById('video');
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        //video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        video.play();
+    });
+  }
+  var canvas = document.getElementById('canvas');
+  var context = canvas.getContext('2d');
+  var video = document.getElementById('video');
+  var link = document.getElementById('link');
+  // Trigger photo take
+  document.getElementById("snap").addEventListener("click", function() {
+     context.drawImage(video, 0, 0, 640, 480);
+     link.setAttribute('download', 'clothes.png');
+     link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+     link.click();
+  });
+  </script>
+
+
+<% include ./partials/header %>

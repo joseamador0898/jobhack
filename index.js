@@ -25,8 +25,8 @@ app.get("/dashboard", function(req,res){
 
 app.post("/", function(req,res){
 	//call api function in
-	//analysis = ;
-	res.redirect("/");
+	analysis = "Color:GREY; Type:JACKET; Material:COTTON";
+	res.render("photo", {analysis: analysis});
 });
 
 // app.get("/", function(req, res){

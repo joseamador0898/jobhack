@@ -36,13 +36,15 @@
           <h1 id ="word2"> Result:</h1>
           <h2 class=linebar>___________________</h2>
         </p>
+        <div class='caption'> <%=analysis%></div>
+         <%analysis=""%>
           <canvas id="canvas" width="640" height="580"></canvas>
           <a id="link"></a>
+          <!-- AIzaSyDKAQxgaAwq81uOv1RGgoV9CgcZpHIr03I -->
     </div>
 
-  <div class='caption'> <%analysis%></div>
 
-  <form action="/photo" method="POST">
+  <form action="/" method="POST">
     <button>Perform Image Analysis</button>
   </form>
 

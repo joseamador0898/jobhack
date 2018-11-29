@@ -23,14 +23,7 @@ app.get("/dashboard", function(req,res){
   }
 );
 
-app.post("/photo", function(req,res){
-	//call api function in
-	//analysis = ;
-	res.redirect("/");
-});
-
-
-app.post("/home",function(req,res){
+app.post("/", function(req,res){
 	//call api function in
 	//analysis = ;
 	res.redirect("/");
